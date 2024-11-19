@@ -17,11 +17,13 @@ namespace BeFaster.App.Solutions.CHK
                 { 'B', 30 },
                 { 'C', 20 },
                 { 'D', 15 },
+                { 'D', 40 },
             };
 
             var specialOffers = new Dictionary<char, (int specialQuantity, int specialPrice)>()
             {
                 { 'A', (3, 130) },
+                { 'A', (5, 200) },
                 { 'B', (2, 45) },
             };
 
@@ -43,6 +45,13 @@ namespace BeFaster.App.Solutions.CHK
 
                 // Increment the SKU count by one for each occurance
                 skuCount[sku]++;
+            }
+
+            // Handle special offer: 2E get one B free
+            if (skuCount.ContainsKey('E') && skuCount.ContainsKey('B')) 
+            {
+                int freeBCount = skuCount['E'] / 2; // Number of B items
+                skuCount['B'] = Math.Max(0, skuCount['B'] -  freeBCount); // Deduct free Bs from total B count
             }
 
             int totalPrice = 0;
@@ -68,3 +77,4 @@ namespace BeFaster.App.Solutions.CHK
         }
     }
 }
+
