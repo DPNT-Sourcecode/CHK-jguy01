@@ -4,6 +4,13 @@ namespace BeFaster.App.Solutions.CHK
 {
     public static class CheckoutSolution
     {
+        // Prices dictionary
+        private static readonly Dictionary<char, int> Prices = new()
+        {
+            { 'A', 50 }, { 'B', 30 }, { 'C', 20 }, { 'D', 15 },
+            { 'E', 40 }, { 'F', 10 },
+        };
+
         public static int ComputePrice(string? skus)
         {
             if (string.IsNullOrWhiteSpace(skus))
@@ -13,12 +20,7 @@ namespace BeFaster.App.Solutions.CHK
 
             var prices = new Dictionary<char, int>()
             {
-                { 'A', 50 },
-                { 'B', 30 },
-                { 'C', 20 },
-                { 'D', 15 },
-                { 'E', 40 },
-                { 'F', 10 },
+                
             };
 
             var specialOffers = new Dictionary<char, List<(int specialQuantity, int specialPrice)>>()
@@ -87,4 +89,5 @@ namespace BeFaster.App.Solutions.CHK
         }
     }
 }
+
 
