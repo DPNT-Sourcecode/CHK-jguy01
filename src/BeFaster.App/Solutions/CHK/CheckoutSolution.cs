@@ -8,7 +8,7 @@ namespace BeFaster.App.Solutions.CHK
         {
             if (string.IsNullOrWhiteSpace(skus))
             {
-                return -1;
+                return 0;
             }
 
             var prices = new Dictionary<char, int>()
@@ -68,6 +68,7 @@ namespace BeFaster.App.Solutions.CHK
         }
     }
 }
+
 
 
 
