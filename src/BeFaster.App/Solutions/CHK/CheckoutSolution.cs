@@ -24,7 +24,25 @@ namespace BeFaster.App.Solutions.CHK
                 { 'A', (3, 130) },
                 { 'B', (2, 45) },
             };
+
+            // Count occurance of each SKU to get quantity purchased
+            var skuCount = new Dictionary<char, int>();
+            foreach (var sku in skus) 
+            {
+                // Invalid SKU
+                if (!prices.ContainsKey(sku)) 
+                {
+                    return -1;
+                }
+
+                // Add SKU to the count if does not exist
+                if (!skuCount.ContainsKey(sku))
+                { 
+                    skuCount[sku] = 0;
+                }
+            }
         }
     }
 }
+
 
