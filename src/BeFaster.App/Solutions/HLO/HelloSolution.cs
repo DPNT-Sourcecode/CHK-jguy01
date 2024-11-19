@@ -14,4 +14,3 @@ namespace BeFaster.App.Solutions.HLO
         }
     }
 }
-

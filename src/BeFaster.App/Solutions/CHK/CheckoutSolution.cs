@@ -6,7 +6,18 @@ namespace BeFaster.App.Solutions.CHK
     {
         public static int ComputePrice(string? skus)
         {
-            throw new SolutionNotImplementedException();
+            if (string.IsNullOrWhiteSpace(skus))
+            {
+                return -1;
+            }
+
+            var prices = new Dictionary<char, int>()
+            {
+                { 'A', 50 },
+                { 'B', 30 },
+                { 'C', 20 },
+                { 'D', 15 }
+            };
         }
     }
 }
