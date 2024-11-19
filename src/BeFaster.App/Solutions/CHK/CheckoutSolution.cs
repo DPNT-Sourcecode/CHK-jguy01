@@ -16,8 +16,15 @@ namespace BeFaster.App.Solutions.CHK
                 { 'A', 50 },
                 { 'B', 30 },
                 { 'C', 20 },
-                { 'D', 15 }
+                { 'D', 15 },
+            };
+
+            var specialOffers = new Dictionary<char, (int quantity, int specialPrice)>()
+            {
+                { 'A', (3, 130) },
+                { 'B', (2, 45) },
             };
         }
     }
 }
+
