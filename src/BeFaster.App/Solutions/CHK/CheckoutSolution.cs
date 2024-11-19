@@ -54,6 +54,14 @@ namespace BeFaster.App.Solutions.CHK
                 skuCount['B'] = Math.Max(0, skuCount['B'] -  freeBCount); // Deduct free Bs from total B count
             }
 
+            // Handle special offer: 2F get one F free
+            if (skuCount.ContainsKey('F'))
+            {
+                int fCount = skuCount['E'];
+                int chargeableCount = (fCount / 3) * 2 + (fCount % 3); // For every 3 Fs, charge only for 2 and the remaining Fs charge full price
+                skuCount['F'] = chargeableCount; // Update the new F count for price calculation
+            }
+
             int totalPrice = 0;
 
             foreach (var item in skuCount) 
@@ -79,6 +87,3 @@ namespace BeFaster.App.Solutions.CHK
         }
     }
 }
-
-
-
