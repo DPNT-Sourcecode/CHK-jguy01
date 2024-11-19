@@ -62,17 +62,20 @@ namespace BeFaster.App.Solutions.CHK
 
                 if (specialOffers.ContainsKey(sku)) 
                 {
-                    var (specialQuantity, specialPrice) = specialOffers[sku];
-                    totalPrice += (quantity / specialQuantity) * specialPrice; // Apply special offer
-                    totalPrice += (quantity % specialQuantity) * prices[sku]; // Add remaining items at full price
+                    // Apply special offers in desc order of quantity for maximum customer benifit
+                    foreach (var (specialQuantity, specialPrice) in specialOffers[sku])
+                    {
+                        totalPrice += (quantity / specialQuantity) * specialPrice; // Apply offer
+                        quantity %= specialQuantity; // Get remaining items after offer applied
+                    }
                 }
-                else
-                {
-                    totalPrice += quantity * prices[sku]; // Full price without special offer
-                }
+
+                // Remaining items added at full price
+                totalPrice += quantity * prices[sku];
             }
 
             return totalPrice;
         }
     }
 }
+
