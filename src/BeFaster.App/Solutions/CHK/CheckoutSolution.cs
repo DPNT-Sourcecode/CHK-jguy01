@@ -18,6 +18,7 @@ namespace BeFaster.App.Solutions.CHK
                 { 'C', 20 },
                 { 'D', 15 },
                 { 'E', 40 },
+                { 'F', 10 },
             };
 
             var specialOffers = new Dictionary<char, List<(int specialQuantity, int specialPrice)>>()
@@ -78,5 +79,6 @@ namespace BeFaster.App.Solutions.CHK
         }
     }
 }
+
 
 
