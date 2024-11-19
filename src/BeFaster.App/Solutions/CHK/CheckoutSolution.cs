@@ -40,9 +40,13 @@ namespace BeFaster.App.Solutions.CHK
                 { 
                     skuCount[sku] = 0;
                 }
+
+                // Increment the SKU count by one for each occurance
+                skuCount[sku]++;
             }
         }
     }
 }
+
 
 
