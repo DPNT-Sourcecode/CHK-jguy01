@@ -19,7 +19,7 @@ namespace BeFaster.App.Solutions.CHK
                 { 'D', 15 },
             };
 
-            var specialOffers = new Dictionary<char, (int quantity, int specialPrice)>()
+            var specialOffers = new Dictionary<char, (int specialQuantity, int specialPrice)>()
             {
                 { 'A', (3, 130) },
                 { 'B', (2, 45) },
@@ -44,9 +44,31 @@ namespace BeFaster.App.Solutions.CHK
                 // Increment the SKU count by one for each occurance
                 skuCount[sku]++;
             }
+
+            int totalPrice = 0;
+
+            foreach (var item in skuCount) 
+            {
+                char sku = item.Key;
+                int quantity = item.Value;
+
+                if (specialOffers.ContainsKey(sku)) 
+                {
+                    var (specialQuantity, specialPrice) = specialOffers[sku];
+                    totalPrice += (quantity / specialQuantity) * specialPrice; // Apply special offer
+                    totalPrice += (quantity % specialQuantity) * prices[sku]; // Add remaining items at full price
+                }
+                else
+                {
+                    totalPrice += quantity * prices[sku]; // Full price without special offer
+                }
+            }
+
+            return totalPrice;
         }
     }
 }
+
 
 
 
