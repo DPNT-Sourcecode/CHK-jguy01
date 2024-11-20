@@ -105,7 +105,29 @@ namespace BeFaster.App.Solutions.CHK
         // Apply group discount
         private static int ApplyGroupDiscount(Dictionary<char, int> skuCount)
         {
+            int groupItemCount = 0;
+            int groupDiscountTotal = 0;
 
+            // Collect eligible items and thier counts
+            var groupItems = GroupDiscountItems
+                .Where(skuCount.ContainsKey)
+                .SelectMany(item => Enumerable.Repeat(item, skuCount[item]))
+                .ToList();
+
+            // Calculate group discounts
+            while (groupItems.Count >= GroupDiscountSize)
+            {
+                groupDiscountTotal += GroupDiscountPrice;
+                groupItems.RemoveRange(0, GroupDiscountSize);
+            }
+
+            // Update remaining counts in sku count
+            foreach(var item in groupItems)
+            {
+                skuCount[item]--;
+            }
+
+            return groupDiscountTotal;
         }
 
         // Calculate total price
@@ -136,3 +158,4 @@ namespace BeFaster.App.Solutions.CHK
         }
     }
 }
+
