@@ -29,7 +29,14 @@ namespace BeFaster.App.Solutions.CHK
         };
 
         // "Buy X, get Y free" rules
-
+        private static readonly List<(char buyer, int buyQuantity, char freeItem)> FreeItemOffers = new()
+        {
+            ('E', 2, 'B'), // 2E get 1B free
+            ('F', 3, 'F'), // 2F get 1F free minimum 3Fs
+            ('N', 3, 'M'), // 3N get 1M free
+            ('R', 3, 'Q'), // 3R get 1Q free
+            ()
+        };
 
         public static int ComputePrice(string? skus)
         {
@@ -105,5 +112,6 @@ namespace BeFaster.App.Solutions.CHK
         }
     }
 }
+
 
 
