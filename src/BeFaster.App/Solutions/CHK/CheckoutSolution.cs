@@ -130,16 +130,7 @@ namespace BeFaster.App.Solutions.CHK
 
                 groupItems.RemoveRange(0, GroupDiscountSize);
             }
-
-            // Verify left over items
-            foreach(var item in groupItems)
-            {
-                if (skuCount.ContainsKey(item))
-                {
-                    skuCount[item]++;
-                }
-            }
-
+                 
             Console.WriteLine($"After discounts -Group discount total: {groupDiscountTotal}, Remaining sku counts: {string.Join(", ", skuCount.Select(kv => $"{kv.Key}:{kv.Value}"))}");
 
             return groupDiscountTotal;
@@ -173,5 +164,6 @@ namespace BeFaster.App.Solutions.CHK
         }
     }
 }
+
 
 
