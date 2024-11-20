@@ -52,8 +52,7 @@ namespace BeFaster.App.Solutions.CHK
             {
                 return -1;
             }
-
-            
+                        
             // Handle special offer: 2E get one B free
             if (skuCount.ContainsKey('E') && skuCount.ContainsKey('B')) 
             {
@@ -117,6 +116,20 @@ namespace BeFaster.App.Solutions.CHK
 
             return skuCount;
         }
+
+        // Apply "Buy X, get Y free" offers
+        private static void ApplyFreeItemOffers(Dictionary<char, int> skuCount)
+        {
+            foreach(var (buyer, buyerQuantity, freeItem) in FreeItemOffers)
+            {
+                if(skuCount.ContainsKey(buyer) && skuCount.ContainsKey(freeItem))
+                {
+                    int eligibleFreeCount = skuCount[buyer] /buyerQuantity;
+                    skuCount[freeItem] = Math.Max(0, skuCount[freeItem] - eligibleFreeCount);
+                }
+            }
+        }
     }
 }
+
 
