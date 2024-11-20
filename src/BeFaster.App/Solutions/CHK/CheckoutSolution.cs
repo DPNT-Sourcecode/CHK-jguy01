@@ -106,7 +106,6 @@ namespace BeFaster.App.Solutions.CHK
         // Apply group discount
         private static int ApplyGroupDiscount(Dictionary<char, int> skuCount)
         {
-            int groupItemCount = 0;
             int groupDiscountTotal = 0;
 
             // Collect eligible items and thier counts
@@ -119,13 +118,15 @@ namespace BeFaster.App.Solutions.CHK
             while (groupItems.Count >= GroupDiscountSize)
             {
                 groupDiscountTotal += GroupDiscountPrice;
-                groupItems.RemoveRange(0, GroupDiscountSize);
-            }
+                
+                // Remove the discounted group items from the sku count
+                for (int i = 0; i < GroupDiscountSize; i++)
+                {
+                    char item = groupItems[i];
+                    skuCount[item]--;
+                }
 
-            // Update remaining counts in sku count
-            foreach(var item in groupItems)
-            {
-                skuCount[item]--;
+                groupItems.RemoveRange(0, GroupDiscountSize);
             }
 
             return groupDiscountTotal;
@@ -159,3 +160,4 @@ namespace BeFaster.App.Solutions.CHK
         }
     }
 }
+
