@@ -136,7 +136,7 @@ namespace BeFaster.App.Solutions.CHK
             {
                 if (skuCount.ContainsKey(item))
                 {
-                    skuCount[item]--;
+                    skuCount[item]++;
                 }
             }
 
@@ -173,4 +173,5 @@ namespace BeFaster.App.Solutions.CHK
         }
     }
 }
+
 
