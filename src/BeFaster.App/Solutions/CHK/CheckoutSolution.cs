@@ -35,7 +35,7 @@ namespace BeFaster.App.Solutions.CHK
             ('F', 3, 'F'), // 2F get 1F free minimum 3Fs
             ('N', 3, 'M'), // 3N get 1M free
             ('R', 3, 'Q'), // 3R get 1Q free
-            ()
+            ('U', 4, 'U'), // 3U get 1U free minimum 4Us
         };
 
         public static int ComputePrice(string? skus)
@@ -44,13 +44,6 @@ namespace BeFaster.App.Solutions.CHK
             {
                 return 0;
             }
-
-         
-
-            var specialOffers = new Dictionary<char, List<(int specialQuantity, int specialPrice)>>()
-            {
-                
-            };
 
             // Count occurance of each SKU to get quantity purchased
             var skuCount = new Dictionary<char, int>();
@@ -112,6 +105,7 @@ namespace BeFaster.App.Solutions.CHK
         }
     }
 }
+
 
 
 
