@@ -52,8 +52,7 @@ namespace BeFaster.App.Solutions.CHK
             }
 
             var skuCount = CountSkus(skus);
-            var count = CountSkus(skus);
-            if (count == null)
+            if (skuCount == null)
             {
                 return -1;
             }
@@ -103,6 +102,12 @@ namespace BeFaster.App.Solutions.CHK
             }
         }
     
+        // Apply group discount
+        private static int ApplyGroupDiscount(Dictionary<char, int> skuCount)
+        {
+
+        }
+
         // Calculate total price
         private static int CalculateTotalPrice(Dictionary<char, int> skuCount)
         {
@@ -131,6 +136,7 @@ namespace BeFaster.App.Solutions.CHK
         }
     }
 }
+
 
 
 
