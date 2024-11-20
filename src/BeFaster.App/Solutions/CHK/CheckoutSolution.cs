@@ -1,4 +1,5 @@
 ﻿using BeFaster.Runner.Exceptions;
+using System.Diagnostics;
 
 namespace BeFaster.App.Solutions.CHK
 {
@@ -47,24 +48,7 @@ namespace BeFaster.App.Solutions.CHK
 
             // Count occurance of each SKU to get quantity purchased
             var skuCount = new Dictionary<char, int>();
-            foreach (var sku in skus) 
-            {
-                // Invalid SKU
-                if (!prices.ContainsKey(sku)) 
-                {
-                    return -1;
-                }
-
-                // Add SKU to the count if does not exist
-                if (!skuCount.ContainsKey(sku))
-                { 
-                    skuCount[sku] = 0;
-                }
-
-                // Increment the SKU count by one for each occurance
-                skuCount[sku]++;
-            }
-
+            
             // Handle special offer: 2E get one B free
             if (skuCount.ContainsKey('E') && skuCount.ContainsKey('B')) 
             {
@@ -103,9 +87,29 @@ namespace BeFaster.App.Solutions.CHK
 
             return totalPrice;
         }
+
+        private static Dictionary<char, int>? CountSkus(string skus) 
+        {
+            var skuCount = new Dictionary<char, int>();
+            foreach (var sku in skus)
+            {
+                // Invalid SKU
+                if (!Prices.ContainsKey(sku))
+                {
+                    return null;
+                }
+
+                // Add SKU to the count if does not exist
+                if (!skuCount.ContainsKey(sku))
+                {
+                    skuCount[sku] = 0;
+                }
+
+                // Increment the SKU count by one for each occurance
+                skuCount[sku]++;
+            }
+
+            return skuCount;
+        }
     }
 }
-
-
-
-
