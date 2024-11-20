@@ -23,7 +23,7 @@ namespace BeFaster.App.Solutions.CHK
             { 'A', new List<(int specialQuantity, int specialPrice)> { (5, 200), (3, 130) } },
             { 'B', new List<(int specialQuantity, int specialPrice)> { (2, 45) } },
             { 'H', new List<(int specialQuantity, int specialPrice)> { (10, 80), (5, 45) } },
-            { 'K', new List<(int specialQuantity, int specialPrice)> { (2, 150) } },
+            { 'K', new List<(int specialQuantity, int specialPrice)> { (2, 120) } },
             { 'P', new List<(int specialQuantity, int specialPrice)> { (5, 200) } },
             { 'Q', new List<(int specialQuantity, int specialPrice)> { (3, 80) } },
             { 'V', new List<(int specialQuantity, int specialPrice)> { (3, 130), (2, 90) } },
@@ -160,3 +160,4 @@ namespace BeFaster.App.Solutions.CHK
         }
     }
 }
+
