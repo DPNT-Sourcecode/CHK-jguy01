@@ -39,6 +39,11 @@ namespace BeFaster.App.Solutions.CHK
             ('U', 4, 'U'), // 3U get 1U free minimum 4Us
         };
 
+        // Group discount 
+        private static readonly List<char> GroupDiscountItems = ['S', 'T', 'X', 'Y', 'Z'];
+        private const int GroupDiscountPrice = 45;
+        private const int GroupDiscountSize = 3;
+
         public static int ComputePrice(string? skus)
         {
             if (string.IsNullOrWhiteSpace(skus))
@@ -126,5 +131,6 @@ namespace BeFaster.App.Solutions.CHK
         }
     }
 }
+
 
 
