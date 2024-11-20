@@ -46,8 +46,13 @@ namespace BeFaster.App.Solutions.CHK
                 return 0;
             }
 
-            // Count occurance of each SKU to get quantity purchased
-            var skuCount = new Dictionary<char, int>();
+            var skuCount = CountSkus(skus);
+            var count = CountSkus(skus);
+            if (count == null)
+            {
+                return -1;
+            }
+
             
             // Handle special offer: 2E get one B free
             if (skuCount.ContainsKey('E') && skuCount.ContainsKey('B')) 
@@ -88,7 +93,8 @@ namespace BeFaster.App.Solutions.CHK
             return totalPrice;
         }
 
-        private static Dictionary<char, int>? CountSkus(string skus) 
+        // Count occurance of each SKU to get quantity purchased
+        private static Dictionary<char, int> CountSkus(string skus) 
         {
             var skuCount = new Dictionary<char, int>();
             foreach (var sku in skus)
@@ -113,3 +119,4 @@ namespace BeFaster.App.Solutions.CHK
         }
     }
 }
+
