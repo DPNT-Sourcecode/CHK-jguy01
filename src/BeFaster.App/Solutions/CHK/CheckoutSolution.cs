@@ -131,6 +131,9 @@ namespace BeFaster.App.Solutions.CHK
                 groupItems.RemoveRange(0, GroupDiscountSize);
             }
 
+            // Verify left over items
+
+
             return groupDiscountTotal;
         }
 
@@ -162,5 +165,3 @@ namespace BeFaster.App.Solutions.CHK
         }
     }
 }
-
-
