@@ -114,6 +114,8 @@ namespace BeFaster.App.Solutions.CHK
                 .SelectMany(item => Enumerable.Repeat(item, skuCount[item]))
                 .ToList();
 
+            Console.WriteLine($"Initial groupItems: {string.Join(", ", groupItems)}");
+
             // Calculate group discounts
             while (groupItems.Count >= GroupDiscountSize)
             {
@@ -160,4 +162,5 @@ namespace BeFaster.App.Solutions.CHK
         }
     }
 }
+
 
