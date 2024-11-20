@@ -52,44 +52,12 @@ namespace BeFaster.App.Solutions.CHK
             {
                 return -1;
             }
-                        
-            // Handle special offer: 2E get one B free
-            if (skuCount.ContainsKey('E') && skuCount.ContainsKey('B')) 
-            {
-                int freeBCount = skuCount['E'] / 2; // Number of B items
-                skuCount['B'] = Math.Max(0, skuCount['B'] -  freeBCount); // Deduct free Bs from total B count
-            }
 
-            // Handle special offer: 2F get one F free
-            if (skuCount.ContainsKey('F'))
-            {
-                int fCount = skuCount['F'];
-                int chargeableCount = (fCount / 3) * 2 + (fCount % 3); // For every 3 Fs, charge only for 2 and the remaining Fs charge full price
-                skuCount['F'] = chargeableCount; // Update the new F count for price calculation
-            }
+            ApplyFreeItemOffers(skuCount);
 
-            int totalPrice = 0;
+            
 
-            foreach (var item in skuCount) 
-            {
-                char sku = item.Key;
-                int quantity = item.Value;
-
-                if (specialOffers.ContainsKey(sku)) 
-                {
-                    // Apply special offers in desc order of quantity for maximum customer benifit
-                    foreach (var (specialQuantity, specialPrice) in specialOffers[sku])
-                    {
-                        totalPrice += (quantity / specialQuantity) * specialPrice; // Apply offer
-                        quantity %= specialQuantity; // Get remaining items after offer applied
-                    }
-                }
-
-                // Remaining items added at full price
-                totalPrice += quantity * prices[sku];
-            }
-
-            return totalPrice;
+            return CalculateTotalPrice(skuCount);
         }
 
         // Count occurance of each SKU to get quantity purchased
@@ -129,7 +97,35 @@ namespace BeFaster.App.Solutions.CHK
                 }
             }
         }
+    
+        // Calculate total price
+        private static int CalculateTotalPrice(Dictionary<char, int> skuCount)
+        {
+            int totalPrice = 0;
+
+            foreach (var item in skuCount)
+            {
+                char sku = item.Key;
+                int quantity = item.Value;
+
+                if (SpecialOffers.ContainsKey(sku))
+                {
+                    // Apply special offers in desc order of quantity for maximum customer benifit
+                    foreach (var (specialQuantity, specialPrice) in SpecialOffers[sku])
+                    {
+                        totalPrice += (quantity / specialQuantity) * specialPrice; // Apply offer
+                        quantity %= specialQuantity; // Get remaining items after offer applied
+                    }
+                }
+
+                // Remaining items added at full price
+                totalPrice += quantity * Prices[sku];
+            }
+
+            return totalPrice;
+        }
     }
 }
+
 
 
