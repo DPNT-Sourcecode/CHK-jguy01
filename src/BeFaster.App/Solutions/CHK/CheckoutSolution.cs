@@ -16,6 +16,18 @@ namespace BeFaster.App.Solutions.CHK
             { 'Y', 20 }, { 'Z', 21 },
         };
 
+        // Special offers dictionary
+        private static readonly Dictionary<char, List<(int specialQuantity, int specialPrice)>> SpecialOffers = new()
+        {
+            { 'A', new List<(int specialQuantity, int specialPrice)> { (5, 200), (3, 130) } },
+            { 'B', new List<(int specialQuantity, int specialPrice)> { (2, 45) } },
+            { 'H', new List<(int specialQuantity, int specialPrice)> { (10, 80), (5, 45) } },
+            { 'K', new List<(int specialQuantity, int specialPrice)> { (2, 150) } },
+            { 'P', new List<(int specialQuantity, int specialPrice)> { (5, 200) } },
+            { 'Q', new List<(int specialQuantity, int specialPrice)> { (3, 80) } },
+            { 'B', new List<(int specialQuantity, int specialPrice)> { (3, 130), (2, 90) } },
+        };
+
         public static int ComputePrice(string? skus)
         {
             if (string.IsNullOrWhiteSpace(skus))
@@ -23,15 +35,11 @@ namespace BeFaster.App.Solutions.CHK
                 return 0;
             }
 
-            var prices = new Dictionary<char, int>()
-            {
-                
-            };
+         
 
             var specialOffers = new Dictionary<char, List<(int specialQuantity, int specialPrice)>>()
             {
-                { 'A', new List<(int specialQuantity, int specialPrice)> { (5, 200), (3, 130) } },
-                { 'B', new List<(int specialQuantity, int specialPrice)> { (2, 45) } },
+                
             };
 
             // Count occurance of each SKU to get quantity purchased
@@ -94,3 +102,4 @@ namespace BeFaster.App.Solutions.CHK
         }
     }
 }
+
