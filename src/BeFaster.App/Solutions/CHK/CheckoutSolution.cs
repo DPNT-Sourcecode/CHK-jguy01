@@ -112,6 +112,7 @@ namespace BeFaster.App.Solutions.CHK
             var groupItems = GroupDiscountItems
                 .Where(skuCount.ContainsKey)
                 .SelectMany(item => Enumerable.Repeat(item, skuCount[item]))
+                .OrderByDescending(item => Prices[item])
                 .ToList();
 
             Console.WriteLine($"Initial groupItems: {string.Join(", ", groupItems)}");
@@ -164,3 +165,4 @@ namespace BeFaster.App.Solutions.CHK
         }
     }
 }
+
