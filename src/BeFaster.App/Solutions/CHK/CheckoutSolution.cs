@@ -59,9 +59,10 @@ namespace BeFaster.App.Solutions.CHK
 
             ApplyFreeItemOffers(skuCount);
 
-            
+            int groupDiscountTotalPrice = ApplyGroupDiscount(skuCount);
+            int totalPrice = CalculateTotalPrice(skuCount);
 
-            return CalculateTotalPrice(skuCount);
+            return groupDiscountTotalPrice + totalPrice;
         }
 
         // Count occurance of each SKU to get quantity purchased
@@ -158,4 +159,5 @@ namespace BeFaster.App.Solutions.CHK
         }
     }
 }
+
 
