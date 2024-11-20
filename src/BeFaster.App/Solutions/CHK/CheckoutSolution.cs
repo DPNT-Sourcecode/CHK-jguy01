@@ -28,6 +28,9 @@ namespace BeFaster.App.Solutions.CHK
             { 'B', new List<(int specialQuantity, int specialPrice)> { (3, 130), (2, 90) } },
         };
 
+        // "Buy X, get Y free" rules
+
+
         public static int ComputePrice(string? skus)
         {
             if (string.IsNullOrWhiteSpace(skus))
@@ -102,4 +105,5 @@ namespace BeFaster.App.Solutions.CHK
         }
     }
 }
+
 
