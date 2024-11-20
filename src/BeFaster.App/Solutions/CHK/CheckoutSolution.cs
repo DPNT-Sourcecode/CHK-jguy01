@@ -26,7 +26,7 @@ namespace BeFaster.App.Solutions.CHK
             { 'K', new List<(int specialQuantity, int specialPrice)> { (2, 150) } },
             { 'P', new List<(int specialQuantity, int specialPrice)> { (5, 200) } },
             { 'Q', new List<(int specialQuantity, int specialPrice)> { (3, 80) } },
-            { 'B', new List<(int specialQuantity, int specialPrice)> { (3, 130), (2, 90) } },
+            { 'V', new List<(int specialQuantity, int specialPrice)> { (3, 130), (2, 90) } },
         };
 
         // "Buy X, get Y free" rules
@@ -126,3 +126,4 @@ namespace BeFaster.App.Solutions.CHK
         }
     }
 }
+
